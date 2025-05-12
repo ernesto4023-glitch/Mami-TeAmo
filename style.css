@@ -1,0 +1,97 @@
+body {
+  background: linear-gradient(to top left, #fce4ec, #f8bbd0);
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.card {
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.front, .inside {
+  width: 100%;
+  height: 100%;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  position: absolute;
+  backface-visibility: hidden;
+  transition: transform 1s;
+  padding: 20px;
+  text-align: center;
+}
+
+.front {
+  transform: rotateY(0deg);
+  background: #f06292;
+  color: white;
+}
+.card-img{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block;
+  border: 4px solid #f06292;
+  object-fit: cover;
+}
+
+
+.inside {
+  transform: rotateY(180deg);
+  background: #fff;
+  color: #e91e63;
+  z-index: -1;
+}
+
+.card.open .front {
+  transform: rotateY(180deg);
+}
+
+.card.open .inside {
+  transform: rotateY(360deg);
+  z-index: 1;
+}
+
+button {
+  margin-top: 15px;
+  background-color: #f06292;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 12px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+#heart-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+}
+.heart {
+  position: absolute;
+  color: #e91e63;
+  font-size: 2rem;
+  animation: floatUp 3s ease-in forwards;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-300px) scale(1.5);
+    opacity: 0;
+  }
+}
